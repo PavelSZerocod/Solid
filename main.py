@@ -6,15 +6,18 @@ class Weapon(ABC):
         pass
 
 class Sword(Weapon):
-    def __init__(self, damage):
-        self.damage = damage
-
+    def __init__(self, name):
+        self.name = name
     def attack(self, damage):
         print(f"Меч-кладенец наносит {damage} урона")
+
+    def __str__(self):
+        return self.name
 
 class Bow(Weapon):
     def __init__(self, name):
         self.name = name
+
     def attack(self, damage):
         print(f"Лук-разящий наносит {damage} урона")
 
@@ -45,14 +48,22 @@ class Monster():
         return self.name
 
 
-sword = Sword("Меч-кладенец наносит")
-bow = Bow(30)
+sword = Sword("Меч-кладенец")
+bow = Bow("Лук - разящий")
 
 fighter = Fighter("Конан", sword)
 monster = Monster("Горгулия")
 
+
+print(f"{fighter} выбирает {bow}")
+print(f"{fighter} наносит удар {bow}")
+bow.attack(30)
+print(f"Монстр {monster} погибает")
+
+
 print(f"{fighter} выбирает {sword}")
 print(f"{fighter} наносит удар {sword}")
+sword.attack(50)
 print(f"Монстр {monster} погибает")
 
 
